@@ -13,22 +13,28 @@
                 </div>
                 <form action="{{ route('login') }}" method="post">
                     @csrf
-                    <div class="input-group mb-3">
-                        <input type="email" name="email" class="form-control" placeholder="Email">
+                    <div class="mb-3 input-group form-group has-feedback">
+                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
+                            id="exampleInputEmail1" placeholder="Email" required value="{{ old('email') }}">
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-envelope"></span>
-                                <span class="help-block">Help Block With Error</span>
                             </div>
                         </div>
+                        @error('email')
+                            <span class="help-block">{{ $message }}</span>
+                        @enderror
                     </div>
-                    <div class="input-group mb-3">
-                        <input type="password" name="password" required class="form-control" placeholder="Password">
+                    <div class="input-group mb-3 form-group has-feedback">
+                        <input type="password" name="password" required class="form-control @error('password') is-invalid @enderror" placeholder="Password" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-lock"></span>
                             </div>
                         </div>
+                        @error('password')
+                            <span class="help-block">{{ $message }}</span>
+                        @enderror
                     </div>
                     <div class="row">
                         <div class="col-8">
