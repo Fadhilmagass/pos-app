@@ -3,8 +3,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{ config('app.name') }} | @yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -30,6 +31,8 @@
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/summernote/summernote-bs4.min.css') }}">
+    {{-- Data Tables --}}
+    <link rel="stylesheet" href="{{ asset('AdminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -71,7 +74,7 @@
 
             <!-- Main content -->
             <section class="content">
-                
+
                 @yield('content')
 
             </section>
@@ -82,7 +85,7 @@
 
         {{-- Include Footer --}}
         @includeIf('layouts.footer')
-        
+
     </div>
     <!-- ./wrapper -->
 
@@ -118,12 +121,13 @@
     <script src="{{ asset('AdminLTE/dist/js/adminlte.js') }}"></script>
     <!-- ChartJS -->
     <script src="{{ asset('AdminLTE/plugins/chart.js/Chart.min.js') }}"></script>
+    <!-- Data Tables -->
+    <script src="{{ asset('AdminLTE/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('AdminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    {{-- Validator --}}
+    <script src="{{ asset('js/validator.min.js') }}"></script>
 
-    <!-- AdminLTE for demo purposes -->
-    <script src="{{ asset('AdminLTE/dist/js/demo.js') }}"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="{{ asset('AdminLTE/dist/js/pages/dashboard2.js') }}"></script>
-
+    @stack('scripts')
 </body>
 
 </html>
