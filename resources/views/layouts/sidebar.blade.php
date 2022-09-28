@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('produk.index') }}" class="nav-link">
                         <i class="nav-icon fa-solid fa-cubes"></i>
                         <p>
                             Produk
